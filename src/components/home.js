@@ -1,13 +1,13 @@
 // Filename - Home.js
 import React from 'react';
 import { Button, Table } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import array from './array';
 import { Link } from 'react-router-dom';
 
 function Home() {
-  //   let history = useNavigate();
+  // let history = useNavigate();
 
   function setID(
     id,
@@ -38,6 +38,8 @@ function Home() {
       .indexOf(id);
 
     array.splice(index, 1);
+    console.log('Delete');
+    alert('Deleted Successfully', 'success');
 
     // history('/');
   }
@@ -49,7 +51,7 @@ function Home() {
           <tr>
             <th>First Name</th>
             <th>Second Name</th>
-            <th>ID No.</th>
+            <th>ID No</th>
             <th>Age</th>
             <th>Employee Type</th>
             <th>Department</th>
@@ -71,7 +73,18 @@ function Home() {
                 <td>
                   <Link to={`/edit`}>
                     <Button
-                      onClick={(e) => setID(item.id, item.Name, item.Age)}
+                      onClick={(e) =>
+                        setID(
+                          item.id,
+                          item.FirstName,
+                          item.SecondName,
+                          item.Idno,
+                          item.Age,
+                          item.EmpType,
+                          item.Department,
+                          item.Salary,
+                        )
+                      }
                       variant='info'
                     >
                       Update
@@ -90,8 +103,8 @@ function Home() {
         </tbody>
       </Table>
 
-      <Link className='d-grid gap-2' to='/create'>
-        <Button variant='warning' size='lg'>
+      <Link className=' gap-2' to='/create'>
+        <Button variant='warning' size='md'>
           Create
         </Button>
       </Link>

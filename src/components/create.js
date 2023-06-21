@@ -1,4 +1,4 @@
-import React, { useState, useNavigate } from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import array from './array';
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 function Create() {
   const [firstname, setfirstname] = useState('');
-  const [secondtname, setsecondname] = useState('');
+  const [secondname, setsecondname] = useState('');
   const [idno, setidno] = useState('');
   const [age, setage] = useState('');
   const [empType, setemptype] = useState('');
@@ -23,29 +23,30 @@ function Create() {
     const ids = uuid();
     let uni = ids.slice(0, 8);
     let a = firstname,
-      b = secondtname,
+      b = secondname,
       c = idno,
       d = age,
-      i = empType,
-      f = department,
-      g = salary;
+      f = empType,
+      g = department,
+      h = salary;
     array.push({
       id: uni,
       FirstName: a,
       SecondName: b,
       IdNo: c,
       Age: d,
-      EmpStatus: i,
-      Department: f,
-      Salary: g,
+      EmpType: f,
+      Department: g,
+      Salary: h,
     });
+    alert('Created Successfully', 'success');
 
     // history('/');
   };
 
   return (
     <div>
-      <Form className='d-grid gap-2' style={{ margin: '15rem' }}>
+      <Form className=' gap-2' style={{ margin: '10rem' }}>
         <h2>
           XFActor LTD <br></br> Employee Data
         </h2>
@@ -120,8 +121,8 @@ function Create() {
           Submit
         </Button>
 
-        <Link className='d-grid gap-2' to='/'>
-          <Button variant='info' size='lg'>
+        <Link className=' gap-2' to='/'>
+          <Button variant='light' size='lg'>
             Home
           </Button>
         </Link>

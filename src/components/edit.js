@@ -3,11 +3,11 @@ import { Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import array from './array';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 function Edit() {
-  const [firstName, setfirstname] = useState('');
-  const [secondName, setsecondname] = useState('');
+  const [firstname, setfirstname] = useState('');
+  const [secondname, setsecondname] = useState('');
   const [id, setid] = useState('');
   const [idno, setidno] = useState('');
   const [age, setage] = useState('');
@@ -27,10 +27,9 @@ function Edit() {
     e.preventDefault();
 
     let a = array[index];
-
-    a.FirstName = firstName;
-    a.SecondName = secondName;
-    a.Id = id;
+    a.FirstName = firstname;
+    a.SecondName = secondname;
+    // a.Id = id;
     a.Idno = idno;
     a.Age = age;
     a.Emptype = emptype;
@@ -41,37 +40,37 @@ function Edit() {
   };
 
   useEffect(() => {
-    setfirstname(localStorage.getItem('First Name'));
-    setsecondname(localStorage.getItem('Second Name'));
-    setsecondname(localStorage.getItem('ID No.'));
+    setfirstname(localStorage.getItem('FirstName'));
+    setsecondname(localStorage.getItem('SecondName'));
+    setidno(localStorage.getItem('Idno'));
     setage(localStorage.getItem('Age'));
-    setsecondname(localStorage.getItem('Employee Type'));
-    setid(localStorage.getItem('id'));
+    setemptype(localStorage.getItem('Emptype'));
     setdepartment(localStorage.getItem('Department'));
-    setdepartment(localStorage.getItem('Salary'));
+    setsalary(localStorage.getItem('Salary'));
+    setid(localStorage.getItem('id'));
   }, []);
 
   return (
     <div>
-      <Form className='d-grid gap-2' style={{ margin: '15rem' }}>
+      <Form className=' gap-2 ' style={{ margin: '15rem' }}>
         {}
         <Form.Group className='mb-3' controlId='formBasicEmail'>
           <Form.Control
-            value={firstName}
+            value={firstname}
             onChange={(e) => setfirstname(e.target.value)}
             type='text'
             placeholder='Enter First Name'
           />
         </Form.Group>
 
-        <Form className='d-grid gap-2' style={{ margin: '15rem' }}>
+        <Form className=' gap-2' style={{ margin: '15rem' }}>
           {}
           <Form.Group className='mb-3' controlId='formBasicEmail'>
             <Form.Control
-              value={secondName}
+              value={secondname}
               onChange={(e) => setsecondname(e.target.value)}
               type='text'
-              placeholder='Enter First Name'
+              placeholder='Enter Second Name'
             />
           </Form.Group>
 
@@ -80,7 +79,7 @@ function Edit() {
               value={idno}
               onChange={(e) => setidno(e.target.value)}
               type='text'
-              placeholder='ID Number'
+              placeholder='ID No.'
             />
           </Form.Group>
 
@@ -132,8 +131,8 @@ function Edit() {
             Update
           </Button>
 
-          <Link className='d-grid gap-2' to='/'>
-            <Button variant='warning' size='lg'>
+          <Link className=' gap-2' to='/'>
+            <Button variant='light' size='lg'>
               Home
             </Button>
           </Link>
